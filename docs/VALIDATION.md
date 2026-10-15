@@ -10,6 +10,8 @@ Data: 15 de outubro de 2026, ambiente Linux com Node.js 24 e Chromium.
 | `npm run test:browser` | Nove fluxos completos passaram, sem erros de console ou página |
 | Telas | Nove telas verificadas em 1440×1000 e 1024×768, sem transbordamento horizontal |
 | `npm run test:offline` | Rede desativada, página recarregada, carreira restaurada e cozinha acessível; JS e CSS vieram do service worker |
+| `npm run deploy -- --dry-run` | Wrangler validou `wrangler.jsonc`, executou o build e reconheceu os arquivos estáticos de `dist` |
+| Runtime local da Cloudflare | `wrangler dev --local` serviu o HTML do jogo; `test:offline` passou nesse servidor, incluindo recarga, carreira e preparo |
 
 O teste de navegador executou os oito tipos de preparo, retomou uma receita salva pela metade, serviu pratos, verificou recompensas, compras, ajustes de preços, configurações, equipe, automação, salários, tributos, inspeção, expansão e as três rodadas da competição. As simulações chegaram aos cinco capítulos nas três dificuldades, sem apoio emergencial e sem dívida.
 
@@ -18,3 +20,5 @@ Foram comparados 180 pontos de salvamento e recarga com a simulação contínua,
 Uma medição do renderizador, com quatro unidades, 28 funcionários e 32 comandas, registrou mediana de 2,6 ms e percentil 95 de 5,0 ms por callback do cenário durante dez segundos. A simulação desse cenário usou velocidade 0,25× para conservar a carga visual. Vinte ciclos de navegação mantiveram somente os loops e canvases esperados, sem acúmulo. Os números descrevem esta máquina e não garantem 60 FPS em outros equipamentos.
 
 Firefox e Safari não foram executados. Não houve teste de usabilidade com jogadores externos nem uma sessão humana de várias horas. Os limites dos modelos de estoque, equipe e especialização estão em [DESIGN.md](DESIGN.md).
+
+A publicação real depende do build conectado ao GitHub no Cloudflare. O endereço público não foi validado por este ambiente: a consulta foi bloqueada pelo proxy de rede antes de chegar ao site. A validação do Wrangler acima foi local e não publicou uma versão na conta Cloudflare.

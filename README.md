@@ -77,6 +77,22 @@ Sem `BASE_URL`, esse teste inicia e encerra seu próprio preview em `http://127.
 
 ## Distribuir e jogar sem internet
 
+### Cloudflare Workers
+
+O arquivo `wrangler.jsonc` define o nome público `dorvimkitchen`, ativa o endereço `workers.dev` e publica a pasta `dist` como arquivos estáticos. O Wrangler executa `npm run build` antes da publicação. Não há um script Worker de aplicação nem uma página de exemplo para substituir o jogo.
+
+No projeto conectado ao GitHub, use a branch `main`, a raiz do repositório e o comando de deploy `npm run deploy`. O campo de build pode ficar vazio, pois o Wrangler já faz essa etapa. Para previews, use `npm run deploy:preview`.
+
+Depois de enviar alterações à `main`, acompanhe o build em **Deployments** e confirme que o commit mais recente ficou ativo em **Production**. Se a página exibir “Hello world”, a versão ativa ainda não está servindo os arquivos do jogo: confira o commit e o resultado do deploy antes de alterar o código no editor online.
+
+Para validar o pacote de publicação localmente, sem publicar nem fornecer credenciais:
+
+```bash
+WRANGLER_SEND_METRICS=false npm run deploy -- --dry-run
+```
+
+### Distribuição estática
+
 ```bash
 npm run build
 npm run preview
